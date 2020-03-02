@@ -48,9 +48,9 @@ public class ValidaData extends HttpServlet {
 
 			if (data_hoje.get(Calendar.MONTH) < data_nascimento.get(Calendar.MONTH)) {
 				idade--;
-			} else if (data_hoje.get(Calendar.DATE) > data_nascimento.get(Calendar.DATE)) {
+			} else if (data_hoje.get(Calendar.DAY_OF_MONTH) < data_nascimento.get(Calendar.DAY_OF_MONTH)) {
 				idade--;
-			}
+			} 
 			
 
 			html_output.println("<html><body>");
