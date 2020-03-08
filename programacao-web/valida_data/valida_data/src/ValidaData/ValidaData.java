@@ -6,7 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,9 +35,11 @@ public class ValidaData extends HttpServlet {
 
 		String data = request.getParameter("data_nascimento").replace("-", "/");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		format.setLenient(false);
 
 		try {
 			Date data_recebida = format.parse(data);
+			
 			Calendar data_nascimento = Calendar.getInstance();
 			data_nascimento.setTime(data_recebida);
 
@@ -63,8 +64,23 @@ public class ValidaData extends HttpServlet {
 			html_output.println("</body></html>");
 
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			html_output.println("<html><body>");
+			html_output.println("<h1>Programa para verificar a idade.</h1>");
+			html_output.println("<fieldset>");
+			html_output.println("<legend>Dados pessoais:</legend>");
+			html_output.println("<p>Data de nascimento: " + data + "</p>");
+			html_output.println("<p>Data de nascimento passada não é válida</p>");
+			html_output.println("</fieldset>");
+			html_output.println("</body></html>");
+		} catch (IllegalArgumentException e) {
+			html_output.println("<html><body>");
+			html_output.println("<h1>Programa para verificar a idade.</h1>");
+			html_output.println("<fieldset>");
+			html_output.println("<legend>Dados pessoais:</legend>");
+			html_output.println("<p>Data de nascimento: " + data + "</p>");
+			html_output.println("<p>Data de nascimento passada não é válida</p>");
+			html_output.println("</fieldset>");
+			html_output.println("</body></html>");
 		}
 
 		// response.getWriter().append("Served at: ").append(request.getParameter("data_nascimento"));
