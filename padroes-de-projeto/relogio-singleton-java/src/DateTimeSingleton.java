@@ -1,6 +1,17 @@
 import java.time.LocalDateTime;
 
-public class DateTime {
+public class DateTimeSingleton {
+
+    public static DateTimeSingleton instance;
+
+    private DateTimeSingleton() {}
+
+    public static DateTimeSingleton getInstance() {
+        if (instance == null) {
+            instance = new DateTimeSingleton();
+        }
+        return instance;
+    }
 
     private LocalDateTime now() {
         return LocalDateTime.now();
