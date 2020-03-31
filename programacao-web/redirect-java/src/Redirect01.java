@@ -5,11 +5,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/redirected")
-public class Redirected extends HttpServlet {
+@WebServlet("/redirect01")
+public class Redirect01 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Redirected() {
+    public Redirect01() {
         super();
     }
 
@@ -20,9 +20,9 @@ public class Redirected extends HttpServlet {
 		}
 		
 		if (from.equals("original")) {
-			response.getWriter().append("você acessou /original e foi enviado para /redirected");
+			response.getWriter().append("você acessou /original e foi enviado para /redirect01");
 		} else {
-			response.getWriter().append("você acessou /redirected direto");
+			response.getWriter().append("você acessou /redirect01 direto");
 		}
 	}
 

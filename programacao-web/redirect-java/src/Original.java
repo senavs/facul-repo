@@ -17,8 +17,19 @@ public class Original extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher redirect = request.getRequestDispatcher("redirected?from=original");
-		redirect.forward(request, response);
+		String to = request.getParameter("to");
+		
+		if (to == null) {
+			response.getWriter().append("você não especificou sua rota. utilize \"?to=redirect01\" ou \"?to=redirect02\"");
+		} else if (to.equals("redirect01")) {
+			RequestDispatcher redirect = request.getRequestDispatcher("redirect01?from=original");
+			redirect.forward(request, response);
+		} else if (to.equals("redirect02")) {
+			response.sendRedirect(request.getContextPath() + "/redirect02?from=original");
+		} else {
+			response.getWriter().append("você não especificou sua rota corretamente. utilize \"?to=redirect01\" ou \"?to=redirect02\"");
+		}
+		
 	}
 
 }
