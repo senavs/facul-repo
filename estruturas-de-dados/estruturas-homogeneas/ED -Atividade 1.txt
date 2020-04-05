@@ -1,0 +1,91 @@
+# Questão 1
+notas = list()
+media = 0
+maiores = list()
+
+for c in range(0, 3):
+    notas.append(float(input(f'Digite a {c + 1}º nota:')))
+    media += notas[c]
+
+media /= len(notas)
+for c in notas:
+    if c > media:
+        maiores.append(c)
+
+print(notas)
+print(media)
+print(maiores)
+
+
+# Questão 2
+conjunto = list()
+while True:
+    conjunto.append(float(input('Numero: [0.000123 para parar]: ')))
+    if conjunto[-1] == 0.000123:
+        conjunto.pop()
+        break
+
+maximo = max(conjunto)
+minimo = min(conjunto)
+amplitude = maximo - minimo
+
+print(conjunto)
+print(maximo)
+print(minimo)
+print(amplitude)
+
+
+# Questão 3
+conjunto = list()
+for c in range(0, 20):
+    conjunto.append(input(f'{c + 1}º Elemento: '))
+
+conjunto.reverse()
+print(conjunto)
+
+
+# Questão 4
+import random
+import numpy as np
+
+matriz = list()
+
+for i in range(0, 20):
+    matriz.append(list())
+    for j in range(0, 10):
+        matriz[i].append(random.randint(0, 9))
+        
+print(np.array(matriz))
+
+
+# Questão 5
+import numpy as np
+
+matriz = list()
+n = 1
+
+for i in range(0, 4):
+    matriz.append(list())
+    for j in range(0, 5):
+        matriz[i].append(n)
+        n += 1
+        
+print(np.array(matriz))
+
+
+# Questão 6
+matriz = [list(range(0, 10)), list(range(0, 10)), list(range(0, 10)), list(range(0, 10)), list(range(0, 10)),
+          list(range(0, 10)), list(range(0, 10)), list(range(0, 10)), list(range(0, 10)), list(range(0, 10))]
+
+e_10x10 = True
+if len(matriz) == 10:
+    for j in range(len(matriz)):
+        if not len(matriz[j]) == 10:
+            e_10x10 = False
+            break        
+            
+if e_10x10:
+    print('É uma matriz 10x10')
+else:
+    print('Não é uma matriz 10x10')
+            
