@@ -1,0 +1,84 @@
+# Questão 1
+registro = dict()
+registro['nome'] = list()
+registro['idade'] = list()
+
+class Pessoa(object):
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+        self.registrar()
+        
+    def registrar(self):
+        global registro
+        registro['nome'].append(self.nome)
+        registro['idade'].append(self.idade)
+
+Pessoa('João', 20)
+
+nome = str(input('Nome da 2ª pessoa: '))
+idade = int(input('Idade da 2ª pessoa: '))
+Pessoa(nome, idade)
+
+print(registro)
+
+
+# Questão 2
+for dado in registro.values():
+    print(dado)
+
+
+# Questão 3
+Registro = dict()
+Registro['cord'] = list()
+
+class Ponto(object):
+    def __init__(self, x, y):
+        self.X = x
+        self.Y = y
+        self.registrar()
+        
+    def registrar(self):
+        global Registro
+        Registro['cord'].append((self.X, self.Y))
+
+Ponto(10, 6)
+Ponto(6, 8)
+
+Registro
+
+def calcularDistrancia():
+    x1 = Registro['cord'][0][0]
+    x2 = Registro['cord'][1][0]
+    y1 = Registro['cord'][0][1]
+    y2 = Registro['cord'][1][0]
+    return (x1 - x2) ** 2 + (y1 - y2) **2
+
+calcularDistrancia()
+
+# Questão 4
+produto = dict()
+produto['codigo'] = list()
+produto['nome'] = list()
+produto['preco'] = list()
+
+class Registro(object):
+    def __init__(self, cod, nome, preco):
+        self.code = cod
+        self.nome = nome
+        self.preco = preco
+        self.registrar()
+        
+    def registrar(self):
+        global produto
+        produto['codigo'].append(self.code)
+        produto['nome'].append(self.nome)
+        produto['preco'].append(self.preco)	
+
+Registro(3241, 'Pé de moleque', '0.75')
+Registro(3124, 'Cocada baina', '0.60')
+Registro(1273, 'Maria mole', '0.45')
+Registro(2315, 'Cajuzinho', '0.80')
+Registro(3286, 'Chocolate-barra', '1.50')
+
+print(produto)

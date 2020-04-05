@@ -1,0 +1,54 @@
+	Solução Exercício 1 na Linguagem C
+
+/*
+   Autor: Vicente Teixeira
+*/
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <locale.h>
+
+typedef struct pessoa {
+	  char nome[20];
+	  int idade;
+}Pessoa;
+
+//==============================================================================
+//  PROTÓTIPOS DAS FUNÇÕES DA APLICAÇÃO
+//==============================================================================
+Pessoa iniciaPessoa (char n[], int i);
+void mostraPessoa (Pessoa p);
+
+//==============================================================================
+//  Função MAIN
+//==============================================================================
+int main() {
+    printf("\n\nLocalidade: %s\n\n", setlocale(LC_ALL, "Portuguese"));
+    char nome[20];
+    int idade;
+    Pessoa pessoa1, pessoa2;
+    strcpy(pessoa1.nome, "João");
+    pessoa1.idade = 20;
+    printf("Informe o nome da 2a. pessoa: ");
+    gets(nome);
+    printf("Informe a idade da 2a. pessoa: ");
+    scanf("%d", &idade);
+    pessoa2 = iniciaPessoa(nome, idade);
+    mostraPessoa(pessoa1);
+    mostraPessoa(pessoa2);
+    printf("\n\n");
+    return 0;
+}
+//==============================================================================
+//  DEMAIS FUNÇÕES DA APLICAÇÃO
+//==============================================================================
+Pessoa iniciaPessoa (char n[], int i) {
+    Pessoa p;
+    strcpy(p.nome, n);
+    p.idade = i;
+    return p;
+} // iniciaPessoa
+
+void mostraPessoa (Pessoa p){
+    printf ("\n\n  Dados da Pessoa: nome: %s, idade: %d.", p.nome, p.idade);
+} // imprimePessoa
