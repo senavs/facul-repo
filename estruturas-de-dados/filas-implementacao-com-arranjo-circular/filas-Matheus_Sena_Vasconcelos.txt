@@ -1,0 +1,37 @@
+1) Fila é uma estrutura de dados com tamanho limitado e com apenas um local de entrada e saída de dados. O primeiro elemento que entrar na fila será o primeoiro a sair (First In First Out).
+
+2) Letra D
+
+3) Letra B
+
+4) Quando existe uma ordem. Onde o primeiro item colocado, será o primeiro a ser trabalhado
+
+5) ° Qualquer tipo de fila com pessoas.
+
+   ° Ordem de processamento de códigos.
+   ° Resultados em consultas SQL (mostra somente um número X de resultados, se precisar de mais, vai consultado mais X elementos).
+   ° Envio de pacotes de rede (quando não segmentado).
+
+6) Se adequa para fila, pois o mesmo não é possível acrescentar elementos no meio do array, o que na lista é possível. A presença de indicadores de elemento de início e de fim na fila faz com que seja possível implementar uma fila circular. Outro fator que colabora a implementação da fila circular é que sempre todos os elementos serão acessados pele menos uma vez e na ordem.
+
+7) Verificando o sucessor do ultimo elemento e o antecessor do primeiro elemento.
+   Utilizando aritmética modular. (index + 1) % Total de elementos para o sucessor e (index - 1 + Total de elementos) % Total de elementos
+
+8) Letra C
+
+9) 	for ... {
+		if (index % 2 == 0) {
+			F2.enqueue(F1.dequeue());
+		};
+		if (index % 2 == 1) {
+			F3.enqueue(F1.dequeue());
+		};
+   	};
+
+   	for ... {
+		F3.enqueue(F2.dequeue());
+   	};
+
+10)	
+
+11) Modificando os indicadores de início e de fim.
