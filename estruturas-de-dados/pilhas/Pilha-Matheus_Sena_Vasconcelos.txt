@@ -1,0 +1,17 @@
+1) Estrutura que tem formas de acesso restrita e imutável.
+2) D
+3) A
+4) 1º Algoritmo de recursividade
+   2º Sequência de abas abertas no navegador web
+   3º Livros em uma mesa
+   4º Cadeiras de plátisco empilhadas
+5) A
+6) C
+7) E 
+8) E 
+9) C
+10) B
+11) a) Verifica se a pilha está vazia. Caso esteja, push "B". Caso contrário, verifica se o primeiro elemento da pulha é diferente de "A" e, se for, push "B". Caso seja igual a "A", pop enquanto a pilha for fazia e o primeiro elemento for "A". Quando não for, push "B".
+    b) if (pilhavazia() || espia() != 'A') {
+    	empilha('B');
+    	} 
