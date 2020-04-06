@@ -1,0 +1,83 @@
+# Questão 1
+conjunto = list()
+maior = int()
+for c in range(0, 2):
+    conjunto.append(int(input(f'Digite o {c + 1}º número: ')))
+    if c == 1:
+        for i in range(0, max(conjunto)):
+            if min(conjunto) * i <= max(conjunto):
+                maior = min(conjunto) * i
+
+print(maior)
+
+# Questão 2
+n = str(input('Digite um numero: '))
+soma = 0
+for c in n:
+    soma += int(c)
+    
+print(f'{n} ... {soma}')
+
+
+# Questão 3
+def calcularMedia(nome, nota1, nota2, nota3, peso1=2, peso2=3, peso3=2):
+    nota = (nota1 * peso1 + nota2 * peso2 + nota3 * peso3) / (peso1 + peso2 + peso3)
+    if nota >= 6:
+        return (nome, nota, 'Aprovado')
+    else:
+        return (nome, nota, 'Reprovado')
+
+calcularMedia('Matheus', 9, 8, 7)
+
+
+# Questão 4
+def calcularPesoIdeal(altura, masculino):
+    peso_ideal = 0
+    if masculino:
+        peso_ideal = (72.7 * altura) - 58
+    else:
+        peso_ideal = (62.1 * altura) - 44.7
+    return peso_ideal
+
+calcularPesoIdeal(masculino=True, altura=1.64)
+
+
+# Questão 5
+def multiplicarSemOperador(n1, n2):
+    resutlado = 0
+    if n1 > n2:
+        for c in range(0, n1):
+            resutlado += n2
+    else:
+        for c in range(0, n2):
+            resutlado += n1
+            
+    return resutlado
+
+multiplicarSemOperador(3, 5)
+
+
+# Questão 6
+import random, numpy as np
+
+matriz = [list(range(0, 4)), list(range(0, 4)), list(range(0, 4)), list(range(0, 4))]
+np.array(matriz)
+
+soma_diag_prim = 0
+prod_diag_secu = 0
+
+for i in range(0, 4):
+    soma_diag_prim += matriz[i][i]
+    prod_diag_secu *= matriz[i][-i]
+    
+print(soma_diag_prim, prod_diag_secu)
+
+
+# Questão 7
+def calcularA(n):
+    a = int()
+    for i in range(1, n + 1):
+        a += (n + 1 - i) / i
+    print('A = ', a)
+
+calcularA(17)
