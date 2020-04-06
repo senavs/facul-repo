@@ -1,0 +1,49 @@
+1. a) x = 18
+   b) y = 9
+   c) i = 1
+      j = 1
+   d) a = 9
+      b = 3
+   e) c = 1
+   f) z = 20
+   g) d = -17
+   k) k = 1
+
+2. a) i = 1.25
+      j = 1.25
+   b) a = 10
+      b = 3.5
+   c) d = -17.8
+
+3. b = 11
+   d = 8
+   e = 32
+   f = 10
+   g = 20
+
+   x = 10
+   y = 10.333
+   k = 27
+   w = 17.0
+   z = 4.0
+
+4. a) c ?
+   b) 9.1518
+   c) a ?
+
+5. a) #include <stdio.h>
+      #include <conio.h>
+
+      void main()
+      {
+          float n1, n2, n3;
+          printf("Digite o primeiro número: ");
+          scanf("%f", &n1);
+          printf("\nDigite o primeiro número: ");
+          scanf("%f", &n2);
+          printf("\nDigite o primeiro número: ");
+          scanf("%f", &n2);
+          float media;
+          media = (n1 + n2 + n2)/3;
+          printf("\nSua media foi: %f", &n1);
+      }
