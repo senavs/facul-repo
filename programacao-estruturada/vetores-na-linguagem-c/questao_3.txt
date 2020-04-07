@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+void _printa_vetor(float vetor[], int tamanho) {
+	int c;
+	printf("[");
+	for (c=0; c<tamanho; c++) {
+		printf("%.2f, ", vetor[c]);
+	};
+	printf("]");
+};
+
+int tira_negativos(float vetor[], int tamanho) {
+	float novo_vetor[tamanho];
+	int c;
+	for (c=0; c < tamanho; c++) {
+		novo_vetor[c] = vetor[c];
+		if (vetor[c] < 0) {
+			novo_vetor[c] =	0;
+		}
+	};
+	_printa_vetor(novo_vetor, tamanho);
+};
+
+int main() {
+	float vetor_teste[] = {0.0, 10.0, -20, 30, 40, -50, 60, 80, -90, 100};
+	// printf("%f", vetor_teste[1]);
+	tira_negativos(vetor_teste, 10);
+}
+

@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+void conceitos_e_notas(float *vetor, float media) {
+	int v;
+	int conceito_a = 0, aprovados = 0, reprovados = 0, zerados = 0;
+	for(v=0; v < 15; v++){
+		if (*vetor == 0){
+			zerados++;
+		};
+		if (*vetor < 5) {
+			reprovados++;
+		};
+		if (*vetor >= 5) {
+			aprovados++;
+		}
+		if (*vetor >= 9) {
+			conceito_a++;
+		}
+		vetor++;
+	};
+	printf("\n\nMedia: %f\nConceito A: %d\nAprovados: %d\nReprovados: %d\nSem rendimento: %d", media, conceito_a, aprovados, reprovados, zerados);
+};
+
+int main() {
+	float notas[15];
+	float media = 0.0;
+	
+	// printf("%d", sizeof(notas));
+	int c, nota;
+	for(c=0; c < (sizeof(notas) / sizeof(float)); c++){
+		printf("\n Digite a nota do aluno de número %d:", c + 1);
+		scanf("%f", &notas[c]);
+		
+		media += notas[c];
+	};	
+	
+	media = media/(sizeof(notas) / sizeof(float));
+	
+	conceitos_e_notas(notas, media);
+};
+
+

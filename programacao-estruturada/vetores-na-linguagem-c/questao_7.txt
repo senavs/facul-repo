@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+void _printa_vetor(int vetor[], int tamanho) {
+	int c;
+	printf("[");
+	for (c=0; c<tamanho; c++) {
+		printf("%d, ", vetor[c]);
+	};
+	printf("]");
+};
+
+void intercala_vetores(int v1[], int v2[], int tamanho) {
+	int vetor_intercalado[tamanho * 2];
+	int c, i=0;
+	for (c=0; c < (tamanho*2); c++) {
+		if (c % 2 == 0) {
+			vetor_intercalado[c] = v1[i];
+			continue;
+		}
+		if (c % 2 == 1) {
+			vetor_intercalado[c] = v2[i];
+			i++;
+			continue;
+		};
+	};
+	
+	_printa_vetor(vetor_intercalado, tamanho * 2);
+};
+
+int main() {	
+	int v1[5], v2[5];
+	
+	int c;
+	for (c=0; c < 5; c++) {
+		printf("v1[%d]:", c);
+		scanf("%d", &v1[c]);
+	};
+	for (c=0; c < 5; c++) {
+		printf("v2[%d]:", c);
+		scanf("%d", &v2[c]);
+	};
+	
+	intercala_vetores(v1, v2, 5);
+};

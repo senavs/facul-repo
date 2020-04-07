@@ -1,0 +1,23 @@
+#include <stdio.h>
+int MAX = 10;
+
+void multiplica_vetor(int vetor[], int tamanho, float k) {
+	int c;
+	printf("[");
+	for (c=0; c < tamanho; c++) {
+		printf("%.2f, ", vetor[c] * k);
+	};
+	printf("]");
+}
+
+int main() {
+	int V[MAX];
+	
+	int c;
+	for (c=0; c < MAX; c++) {
+		printf("\nElemento %d:", c);
+		scanf("%d", &V[c]);
+	}
+	
+	multiplica_vetor(V, MAX, 8);
+} 

@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+float amplitude(int pos_menor, int pos_maior, float vetor[]) {
+	return vetor[pos_maior] - vetor[pos_menor];
+};
+
+int pos_menor(float vetor[], int tamanho) {
+	int menor = 0;
+	int c;
+	for (c=0; c < tamanho; c++)	{
+		if (c == 0) {
+			menor = c;
+		} else {
+			if (vetor[c] < vetor[menor]) {
+				menor = c;
+			};
+		};
+	};
+	
+	return menor;
+};
+
+int pos_maior(float vetor[], int tamanho) {
+	int maior = 0;
+	int c;
+	for (c=0; c < tamanho; c++)	{
+		if (c == 0) {
+			maior = c;
+		} else {
+			if (vetor[c] > vetor[maior]) {
+				maior = c;
+			};
+		};
+	};
+	
+	return maior;
+};
+
+int main() {
+	float x[3];
+	
+	int c;
+	for(c=0; c < (sizeof(x) / sizeof(float)); c++){
+		printf("\n Digite um número:");
+		scanf("%f", &x[c]);		
+	};
+	
+	printf("\n\nAmplitude: %.2f", amplitude(pos_menor(x, 3), pos_maior(x, 3), x));
+};
