@@ -1,0 +1,123 @@
+Questão 1)
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+	char palavra[20];
+	char nova_palavra[20];
+	printf("Digite uma palavra de ate 20 caracter: ");
+	gets(palavra);
+	
+	strncpy(nova_palavra, palavra, 5);
+	printf("Nova palavra: %s", nova_palavra);
+	
+	return 0;
+}
+
+Questão 2)
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+	char prenome[20];
+	char sobrenome[20];
+	char nome[40];
+	printf("Digite o prenome: ");
+	gets(prenome);
+	strncpy(prenome, strcat(prenome, " "), 20);
+	printf("Digite o prenome: ");
+	gets(sobrenome);
+	
+	strncpy(nome, strcat(prenome, sobrenome), 40);
+	
+	printf("NOME: %s", nome);
+	
+	return 0;
+}
+
+Questão 3)
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+	char palavra[20];
+	
+	printf("Digite uma palavra: ");
+	gets(palavra);
+	
+	printf("A palavra: %s\ntem %d de tamanho.", palavra, strlen(palavra));
+	
+	return 0;
+}
+
+Questão 4) - Meio funcional	
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+	char palavra[10];
+	char palavra_invertida[10]; 
+	printf("Digite uma palavra: ");
+	gets(palavra);
+	
+	int c;
+	for (c=0; c<10; c++) {
+		palavra_invertida[9 - c] = palavra[c];
+	}
+	
+	printf("A palavra: %s", palavra_invertida);
+	
+	return 0;
+}
+
+Questão 5)
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+	char senha[10];
+	char tentativa[10];
+	
+	printf("Senha original: ");
+	gets(senha);
+	
+	int c;
+	for (c=0; c<3; c++) {
+		printf("\nDigite a senha (%d tentativa): ", c + 1);
+		gets(tentativa);
+		if (strcmp(senha, tentativa) == 0) {
+			printf("Senha correta");
+			break;
+		} else {
+			printf("Senha incorreta, tente novamente");
+		}
+	}
+	
+	return 0;
+}
+
+Questão 6) Em branco
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+	char p1[20], p2[20], p3[20];
+	
+	printf("Digite a 1 palavra: ");
+	gets(p1);
+	
+	printf("Digite a 2 palavra: ");
+	gets(p2);
+	
+	printf("Digite a 3 palavra: ");
+	gets(p3);
+		
+	if (strcmp(p1, p2) > 0) {
+		// p1
+		if (strcmp(p1, p3) > 0) {
+		// p1	
+		}
+	}
+		
+	return 0;
+}
