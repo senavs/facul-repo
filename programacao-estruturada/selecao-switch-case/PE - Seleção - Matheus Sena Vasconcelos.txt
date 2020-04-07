@@ -1,0 +1,209 @@
+Questão 1)
+#include <stdio.h>
+
+int main() {
+	int x;
+	printf("Escolha um dia da semana: ");
+	scanf("%d", &x);
+	
+	switch(x) {
+		case 1: printf("Domingo");
+				break;
+		case 2: printf("Segunda");
+				break;
+		case 3: printf("Terça");
+				break;
+		case 4: printf("Quarta");
+				break;
+		case 5: printf("Quinta");
+				break;
+		case 6: printf("Sexta");
+				break;
+		case 7: printf("Sábado");
+				break;
+		default: printf("Dia inválido");
+	}
+	
+	return 0;
+}
+--------------------------------------------------------------------------------------
+Questão 2)
+#include <stdio.h>
+
+int main() {
+	int x;
+	printf("Escolha um Trimestre: ");
+	scanf("%d", &x);
+	
+	switch(x) {
+		case 1: printf("Janeiro, Feveriro, Marça");
+				break;
+		case 2: printf("Abril, Maio, Junho");
+				break;
+		case 3: printf("Julho, Agosto, Setembro");
+				break;
+		case 4: printf("Outubro, Novembro, Dezembro");
+				break;
+		default: printf("Trimestre inválido");
+	}
+	
+	return 0;
+}
+--------------------------------------------------------------------------------------
+Questão 3)
+#include <stdio.h>
+
+int main() {
+	int x;
+	printf("Escolha um Trimestre: ");
+	scanf("%d", &x);
+	
+	switch(x) {
+		case 1: 
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+			printf("Tem 31 dias");
+			break;
+		case 2:
+			printf("Tem 28 dias");
+			break;
+		case 4: 
+		case 6:
+		case 9:
+		case 11:
+			printf("Tem 30 dias");
+			break;
+		default: printf("Mês inválido");
+	}
+	
+	return 0;
+}	
+--------------------------------------------------------------------------------------
+Questão 4)
+#include <stdio.h>
+
+int main() {
+	int x;
+	printf("Um número: ");
+	scanf("%d", &x);
+	
+	switch(x) {
+		case 0: 
+			printf("zero");
+			break;
+		case 1: 
+			printf("um");
+			break;
+		case 2: 
+			printf("dois");
+			break;
+		case 3: 
+			printf("três");
+			break;
+		case 4: 
+			printf("quatro");
+			break;
+		case 5: 
+			printf("cinco");
+			break;
+		default: printf("Número negativo ou maior que cinco");
+	}
+	
+	return 0;
+}	
+--------------------------------------------------------------------------------------
+Questão 5)
+#include <stdio.h>
+
+int main() {
+	int x;
+	printf("Um número: ");
+	scanf("%d", &x);
+	
+	switch(x) {
+		case 8: 
+		case 9:
+			printf("dente de leite");
+			break;
+		case 10: 
+		case 11:
+			printf("mirim");
+			break;
+		case 12: 
+		case 13:
+			printf("infantil");
+			break;
+		case 14: 
+		case 15:
+			printf("juvenil");
+			break;
+		case 16: 
+		case 17:
+			printf("Junior");
+			break;
+		default: printf("Não atende as exigências da escolinha de futebol");
+	}
+	
+	return 0;
+}	
+--------------------------------------------------------------------------------------
+Questão 6)
+#include <stdio.h>
+
+int main() {
+	int x;
+	printf("Um número: ");
+	scanf("%d", &x);
+	
+	switch(x) {
+		case 1001: 
+			printf("8,32");
+			break;
+		case 1234: 
+			printf("5,25");
+			break;
+		case 2541: 
+			printf("3,30");
+			break;
+		case 3636: 
+			printf("4,45");
+			break;
+		case 5005:
+			printf("5,05");
+			break;
+		default: printf("produto inválido");
+	}
+	
+	return 0;
+}	
+--------------------------------------------------------------------------------------
+Questão 7)
+#include <stdio.h>
+
+int main() {
+	char x;
+	printf("Um número: ");
+	gets(&x);
+	
+	switch(x) {
+		case 'A': 
+			printf("13\%");
+			break;
+		case 'B': 
+			printf("15\%");
+			break;
+		case 'C': 
+			printf("18\%");
+			break;
+		case 'D': 
+			printf("21\%");
+			break;
+		default: printf("10\%");
+	}
+	
+	return 0;
+}	
