@@ -1,0 +1,311 @@
+Questão 2)
+a)
+#include <stdio.h>
+int main(){
+	int c;
+	for(c = 10; c <= 500; c++){
+		if (c % 10 == 0){
+			printf("%d\n", c);
+		}
+	}
+}
+
+b)
+#include <stdio.h>
+int main(){
+	int c;
+	float media = 0.0;
+	float nota;
+	for(c = 0; c < 10; c++){
+		printf("\nDigite sua nota: ");
+		scanf("%f", &nota);
+		media += nota;
+	}
+	printf("Média: %f", media / 10.0);
+	return 0;
+}
+
+c)
+#include <stdio.h>
+int main(){
+	int c;
+	int idade, maior;
+	for(c = 0; c < 10; c++){
+		printf("\nDigite sua nota: ");
+		scanf("%d", &idade);
+		if(c == 0){
+			maior = idade;
+		} else {
+			if(idade > maior){
+				maior = idade;
+			}
+		}
+	}
+	printf("Maior: %d", maior);
+	return 0;
+}
+
+d)
+#include <stdio.h>
+int main(){
+	char sexo;
+	float peso;
+	float magra;
+	int c;
+	for(c = 0; c < 8; c++){
+		printf("\n %d:", c);
+		printf("Digite o sexo:");
+		scanf("%s", &sexo);
+		printf("Digite o peso: ");
+		scanf("%f", &peso);
+		if(c == 0){
+			if(sexo == 'f'){
+				magra = peso;
+			}
+		} else {
+			if(peso < magra && sexo == 'f'){
+				magra = peso;
+			}
+		}
+	}
+	printf("%f", magra);
+	
+	return 0;
+}
+
+e)
+#include <stdio.h>
+int main(){
+	int c;
+	for(c = 500; c <=1000; c++){
+		if(c % 24 == 0){
+			printf("%d\n", c);
+		}
+	}
+	return 0;
+}
+
+f)
+#include <stdio.h>
+#include <math.h>
+int main(){
+	int c;
+	int num, prod = 1;
+	for(c = 0; c < 5; c++){
+		printf("Digite um número: ");
+		scanf("%d", &num);
+		prod *= num;
+	}
+	printf("%d", prod);
+	return 0;
+}
+
+g)
+#include <stdio.h>
+#include <math.h>
+int main(){
+	int c;
+	for(c = 10; c <=20; c++){
+		printf("Quadrado: %.2lf\nCubo: %.2lf\n", pow(c, 2), pow(c, 3));
+	}
+	return 0;
+}
+
+h)
+#include <stdio.h>
+#include <math.h>
+int main(){
+	int c;
+	for(c = 0; c <= 100; c++){
+		printf("%d C - %d F\n", c, ((9/5)*c) + 32);
+	}
+	
+	return 0;
+}
+
+Questão 3)
+a)
+#include <stdio.h>
+#include <math.h>
+int main(){
+	int c = 1;
+	int soma;
+	while(c !=0){
+		printf("\nDigite um número: ");
+		scanf("%d", &c);
+		soma += c;
+	}
+	printf("%d", soma);
+	return 0;
+}
+
+b)
+#include <stdio.h>
+int main()
+{
+    int idade = 1;
+    int menor = 9999;
+    while(idade != 0){
+        printf("Digite uma idade (0 p/ parar): ");
+        scanf("%d", &idade);
+        if(idade != 0 && menor > idade){
+            menor = idade;
+        }
+    }
+    printf("Menor idade: %d", menor);
+    return 0;
+}
+
+c)
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int numero = 1;
+    int qt_par = 0;
+    
+    while (numero != 0) {
+        printf("Digite um numero: ");
+        scanf("%i", &numero);
+        if (numero % 2 == 1) {
+            qt_par++;
+        }
+    }
+    printf("Quantidade de numeros pares: %d", qt_par);
+    return 0;
+}
+
+d)
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int idade = 1;
+    char sexo;
+    int maior_idade_homem;
+    int qt_mulher = 0;
+    float media_idade_mulher = 1;
+    
+    while(idade != 0){
+        printf("Digite um sexo: [F/M]");
+        gets(&sexo);
+        printf("Digite uma idade: ");
+        scanf("%i", &idade);
+        
+        if (sexo == 'F') {
+            media_idade_mulher += idade;
+            qt_mulher++;
+        } else {
+            if (sexo == 'M') {
+                if (idade > maior_idade_homem) {
+                    maior_idade_homem = idade;
+                }
+            } else {
+                printf("Sexo invalido");
+            }
+        }
+    }
+    
+    printf("Maior idade entre os homens: %d", maior_idade_homem);
+    printf("Media idade entre as mulheres: %d", media_idade_mulher);
+    
+    return 0;
+}
+
+e)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{
+    float numero = 0;
+    
+    while (numero >= 0) {
+        printf("\nDigite um numero: ");
+        scanf("%f", &numero);
+        
+        if (numero >= 0) {
+            printf("Raiz quadrada de %f e %f",numero, sqrt(numero));
+        } else {
+            printf("Raiz de zero e infinito");
+        }
+    }
+    
+    return 0;
+}
+
+f)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{
+    int qt_maior_7 = 0;
+    int qt_menor_5 = 0;
+    float nota;
+    
+    int qt_notas, contador = 0;
+    
+    printf("Quantos notas deseja adicionar? ");
+    scanf("%d", &qt_notas);
+    
+    while (contador < qt_notas) {
+        printf("\nDigite uma nota: ");
+        scanf("%f", &nota);
+        if (nota < 0 || nota > 10) {
+            printf("Nota deve ser maior que 0 e menor ou igual a 10");
+        } else {
+            if (nota >=7) {
+                qt_maior_7++;
+            } else {
+                if (nota <= 5) {
+                    qt_menor_5++;
+                }
+            }
+        }
+        contador++;
+    }
+    
+    printf("Qt de notas >= 7: %d\n", qt_maior_7);
+    printf("Qt de notas <= 5: %d", qt_menor_5);
+    return 0;
+}
+
+g)
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{
+    int numero_pc = rand() % 10;
+    int numero_jg = 0;
+    int tentativas = 0;
+    while(1){
+        printf("\nDigite um numero: [0-9]");
+        scanf("%d", &numero_jg);
+        
+        if (numero_jg < numero_pc) {
+            printf("\nNumero inferior");
+            tentativas++;
+            continue;
+        } 
+        if (numero_jg > numero_pc) {
+            printf("\nNumero superior");
+            tentativas++;
+            continue;
+        }
+        tentativas++;
+        break;
+    }
+    printf("Vc acertou em %d", tentativas);
+    
+    return 0;
+}
+
+
+

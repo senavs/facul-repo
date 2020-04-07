@@ -1,0 +1,56 @@
+a)
+#include <stdio.h>
+
+int main() {
+	int altura;
+	printf("Digite a altura: ");
+	scanf("%d", &altura);
+
+	int linha;
+	int branco;
+	int ponto;
+	for(linha=1; linha<=altura; linha++){
+		for(branco=altura-linha; branco > 0; branco--){
+			printf(" ");
+		}
+		for(ponto=(2*linha-1); ponto > 0; ponto--){
+			printf("*");
+		}
+		printf("\n");
+	}
+	
+	return 0;
+}	
+
+b)
+#include <stdio.h>
+
+int main() {
+	int altura;
+	printf("Digite a altura: ");
+	scanf("%d", &altura);
+
+	int linha;
+	int branco;
+	int ponto;
+	for(linha=1; linha<=altura; linha++){
+		for(branco=altura-linha; branco > 0; branco--){
+			printf(" ");
+		}
+		for(ponto=(2*linha-1); ponto > 0; ponto--){
+			printf("*");
+		}
+		printf("\n");
+	}
+	for(linha=altura; linha > 0; linha--){
+		for(branco=altura-linha+1; branco > 0; branco--){
+			printf(" ");
+		}
+		for(ponto=linha*2-3; ponto > 0; ponto--){
+			printf("*");
+		}
+		printf("\n");
+	}
+	
+	return 0;
+}	
