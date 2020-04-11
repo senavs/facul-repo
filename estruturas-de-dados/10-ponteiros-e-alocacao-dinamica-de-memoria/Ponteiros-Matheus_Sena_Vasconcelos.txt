@@ -1,0 +1,109 @@
+1) x = 3
+   y = 4
+   p = End. de Y
+
+2) x = 3
+   y = 4
+   p = End. de Y
+   
+   Saída:
+   "x = 3
+    y = 1"
+
+3) a) O ponteiro P irá apontar para a memódia 0x100 e não para o local da memória onde está alocada a variável x. 
+     p = &(x1);
+
+   b) Para atribuir um valor a um ponteiro, não precisa do *.
+     temp = *i;
+     i = *j;
+     j = *temp;
+
+   c) Não é necessário o *. Falta o & na atribuição.
+     p = &x;
+
+   d) a e b não precisam ser ponteiros, mas, sim, variáveis.
+     char a, b;
+
+   e) int x, *p, *q;
+  	  p = &x;
+	  x = 10;
+	  q = *p;
+	  printf("\n%d\n", q);
+	  		OU
+	  int x, *p, **q;
+	  p = &x;
+	  q = &p;
+	  x = 10;
+	  printf("%d", **q);
+
+4) Cria uma variável do tipo inteiro com valor 10. Cria um ponteiro p do tipo inteiro. Cria um ponteiro para um ponteiro do tipo inteiro.
+   O ponteiro p recebe o endereço de x
+   O ponteiro pp recebe o endereçi de p
+   Printa: Que valor é: 100
+   Printa: Que valor é: 0x01234567 (Endereço de p)
+   Printa: Que valor é: 0x76543210 (Endereço de pp)
+
+5) a) V
+   b) F -> pa = &(a+0);
+   c) V
+   d) V
+   e) V
+   f) F -> é preciso usar o & pa = &(a+i)
+   g) V
+   h) V
+   i) V
+   j) V
+
+6) 
+
+7) 
+#include <stdio.h>
+
+int funcao_classifica(int *a, *b, *c) {
+	int maior, menor, intermediario;
+	if (*a > *b) {
+		if (*a > *c) {
+			maior = *a;
+			if (c* > *b) {
+				menor = *b;
+				intermediario = *c;
+			} else {
+				menor = *c;
+				intermediario = *b;
+			}
+		} else {
+			maior = *c;
+			menor = *b;
+			intermediario = *a;	
+		}
+	} else {
+		if (*b > *c) {
+			maior = *b;
+			if (c* > *a) {
+				menor = *a;
+				intermediario = *c;
+			} else {
+				menor = *c;
+				intermediario = *a;
+			}
+		} else {
+			maior = *c;
+			intermediario = *a;
+			menor = *b;
+		}
+	}
+
+	return maior, intermediario, menor;
+};
+
+int main() {
+	int a, b, c;
+	printf("Digite o valor de A: ");
+	scanf("%d", &a);
+	printf("Digite o valor de B: ");
+	scanf("%d", &b);
+	printf("Digite o valor de C: ");
+	scanf("%d", &c);
+
+	a, b, c = funcao_classifica(&a, &b, &c);
+};
