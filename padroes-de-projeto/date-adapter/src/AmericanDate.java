@@ -1,3 +1,4 @@
+// adpater
 public class AmericanDate extends Date {
 
     public AmericanDate(int year, int month, int day) {
