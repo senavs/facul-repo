@@ -1,0 +1,67 @@
+
+/* Exemplo extraído de 
+http://www.java2s.com/Tutorial/Oracle/0480__PL-SQL-Programming/AcompleteexampleusingRAISEAPPLICATIONERROR.htm
+
+*/
+
+create table company(
+       product_id        number(4)    not null,
+       company_id          NUMBER(8)    not null,
+       company_short_name  varchar2(30) not null,
+       company_long_name   varchar2(60)
+    );
+
+insert into company values(1,1001,'A Inc.','Long Name A Inc.');
+
+
+insert into company values(1,1002,'B Inc.','Long Name B Inc.');
+
+CREATE OR REPLACE PROCEDURE org_proc
+                    (p_flag_in VARCHAR2,
+                     p_product_id NUMBER,
+                     p_company_id NUMBER,
+                     p_company_short_name VARCHAR2,
+                     p_company_long_name VARCHAR2)
+    IS
+      v_error_code NUMBER;
+    BEGIN
+     IF (p_flag_in ='I')THEN
+       BEGIN
+         INSERT INTO company VALUES(p_product_id,p_company_id,p_company_short_name,p_company_long_name);
+       EXCEPTION WHEN OTHERS THEN
+         v_error_code :=SQLCODE;
+         IF v_error_code =-1 THEN
+           RAISE_APPLICATION_ERROR(-20000,'Organization '||TO_CHAR(p_company_id)||' already exists.');
+         ELSIF v_error_code =-2291 THEN
+           RAISE_APPLICATION_ERROR(-20001,'Invalid Hierarchy Code '||TO_CHAR(p_product_id)||' specified.');
+         END IF;
+       END;
+     ELSIF (p_flag_in ='C')THEN
+       BEGIN
+         UPDATE company
+         set company_short_name =p_company_short_name,
+         company_long_name =p_company_long_name
+         WHERE product_id =p_product_id
+         AND company_id =p_company_id;
+         IF SQL%NOTFOUND THEN
+           RAISE_APPLICATION_ERROR(-20002,'Organization '||TO_CHAR(p_company_id)||' does not exist.');
+         END IF;
+       END;
+     ELSIF (p_flag_in ='D')THEN
+       BEGIN
+         DELETE company
+         WHERE product_id =p_product_id
+         AND company_id =p_company_id;
+         IF SQL%NOTFOUND THEN
+           RAISE_APPLICATION_ERROR(-20003,'Organization '||TO_CHAR(p_company_id)||' does not exist.');
+         END IF;
+       EXCEPTION WHEN OTHERS THEN
+         v_error_code :=SQLCODE;
+         IF v_error_code =-2292 THEN
+           RAISE_APPLICATION_ERROR(-20004,'Organization '||TO_CHAR(p_company_id)||' site details defined for it.');
+         END IF;
+       END;
+     END IF;
+   END;
+   /
+

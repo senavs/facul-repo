@@ -1,0 +1,28 @@
+create or replace
+FUNCTION         F_CHECA_MATRICULADO 
+(
+  P_ANO_SEMESTRE IN CHAR  
+, P_MATRICULA IN NUMBER  
+) RETURN VARCHAR2 AS 
+v_contador        NUMBER :=0;
+v_mensagem        VARCHAR2(200);
+    CURSOR c_ALUNO_CURSO IS
+      SELECT CD_STATUS, NM_CURSO, NM_ALUNO
+      FROM FAC.ALUNO A JOIN FAC.MATRICULA B
+      ON A.ID_ALUNO = B.ID_ALUNO
+        JOIN FAC.CURSO C
+        ON B.ID_CURSO = C.ID_CURSO
+      WHERE
+        B.ID_ALUNO = P_MATRICULA AND
+        B.NU_ANO_SEMESTRE = P_ANO_SEMESTRE;
+    
+BEGIN
+      FOR aux IN c_ALUNO_CURSO LOOP
+        IF aux.CD_STATUS = 'OK'
+        THEN 
+          v_contador := v_contador + 1;
+        END IF;
+      END LOOP;
+      v_mensagem := 'Total de cursos em que está matriculado: ' || to_char(v_contador);
+      RETURN v_mensagem;
+END F_CHECA_MATRICULADO;

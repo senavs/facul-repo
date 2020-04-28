@@ -1,0 +1,33 @@
+create or replace
+PROCEDURE     listar_historico (p_id_matricula in number)
+
+IS
+
+    CURSOR c_hist IS
+        SELECT nm_aluno, nm_materia, nu_ano_semestre, nu_faltas, cd_grau_final, nu_creditos
+        FROM fac.aluno A, fac.historico B, fac.materia C
+        WHERE 
+           A.id_aluno = B.id_aluno and
+           b.id_materia = c.id_materia and
+           A.id_aluno = p_id_matricula;
+    
+v_contador        NUMBER :=0;
+
+BEGIN
+/* Lembrar de no SQL-PLUS dar o comando SET SERVEROUTPUT ON para ver a saída */    
+    FOR aux IN c_hist LOOP
+        IF aux.cd_grau_final in ('A','B','C','CC')
+        THEN 
+          v_contador := v_contador + aux.nu_creditos;
+          DBMS_OUTPUT.PUT_LINE('Aluno(a): ' || aux.nm_aluno || ' aprovado(a) em ' || aux.nm_materia || ' com grau ' || aux.cd_grau_final
+                              || ' e ' || to_char(aux.nu_faltas) || 'faltas.');
+        END IF;
+    END LOOP;
+
+/* Mensagem com total de lidos */
+    DBMS_OUTPUT.PUT_LINE('Total de créditos obtidos: ' || to_char(v_contador));
+
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
+END listar_historico;

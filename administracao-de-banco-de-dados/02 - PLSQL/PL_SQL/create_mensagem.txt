@@ -1,0 +1,19 @@
+CREATE table "MENSAGEM" (
+    "ID_MSG"     NUMBER(5) NOT NULL,
+    "NM_MSG"     VARCHAR2(255) NOT NULL,
+    constraint  "MENSAGEM_PK" primary key ("ID_MSG")
+)
+/
+
+CREATE sequence "MENSAGEM_SEQ" 
+/
+
+CREATE trigger "BI_MENSAGEM"  
+  before insert on "MENSAGEM"              
+  for each row 
+begin  
+  if :NEW."ID_MSG" is null then
+    select "MENSAGEM_SEQ".nextval into :NEW."ID_MSG" from dual;
+  end if;
+end;
+/  

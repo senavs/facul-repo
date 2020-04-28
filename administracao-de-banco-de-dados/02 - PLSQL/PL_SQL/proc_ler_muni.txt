@@ -1,0 +1,31 @@
+CREATE OR REPLACE 
+PROCEDURE ler_muni (p_sg_uf in varchar2)
+
+IS
+
+    CURSOR c_muni IS
+        SELECT SIGLA_UF, ID_MUNI_IBGE, NM_MUNI
+        FROM MUNI_IBGE A, UF_IBGE B
+        WHERE 
+           A.ID_UF_IBGE = B.ID_UF_IBGE and
+           SIGLA_UF = p_sg_uf;
+    
+v_contador        NUMBER :=0;
+
+BEGIN
+/* Lembrar de no SQL-PLUS dar o comando SET SERVEROUTPUT ON para ver a saída */    
+    FOR aux_muni IN c_muni LOOP
+        DBMS_OUTPUT.PUT_LINE('UF/Código/Nome muni: ' || SIGLA_UF || '/' || to_char(aux_muni.ID_MUNI_IBGE) || '/' || aux_muni.NM_MUNI);
+        v_contador := v_contador + 1;
+    END LOOP;
+
+/* Mensagem com total de lidos */
+    DBMS_OUTPUT.PUT_LINE('Lidos: ' || to_char(v_contador);
+
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Erro inesperado: ' || SQLERRM);
+END ler_muni;
+/
+
+

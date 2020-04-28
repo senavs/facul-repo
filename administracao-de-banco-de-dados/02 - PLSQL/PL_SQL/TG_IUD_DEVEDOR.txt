@@ -1,0 +1,49 @@
+/* EXEMPLO DE TRIGGER
+Calcula total da dívida de cliente com parcelas em atraso sendo inserido na lista de devedores.
+Registra data em que devedor fez renegociação.
+Impede exclusão de devedor que ainda possui dívida.
+*/
+CREATE OR REPLACE TRIGGER VAREJO.TG_IUD_DEVEDOR 
+BEFORE INSERT OR DELETE OR UPDATE ON VAREJO.DEVEDOR 
+FOR EACH ROW 
+DECLARE
+  CONTA_PARC INTEGER := 0;
+BEGIN
+  IF INSERTING
+  THEN
+    SELECT SUM(VL_PARCELA), SYSDATE INTO :NEW.VL_DIVIDA, :NEW.DT_APURACAO_DIVIDA
+      FROM VAREJO.PARCELA
+      WHERE
+      ID_CLIENTE = :NEW.ID_CLIENTE
+      AND
+      DT_VENCIMENTO < SYSDATE
+      AND
+      DT_PAGAMENTO IS NULL
+      GROUP BY ID_CLIENTE;
+  ELSIF UPDATING
+    THEN
+      :NEW.DT_RENEGOCIACAO_DIVIDA := SYSDATE;
+    ELSE
+      SELECT COUNT(*) INTO CONTA_PARC
+        FROM VAREJO.PARCELA
+        WHERE
+        ID_CLIENTE = :NEW.ID_CLIENTE
+        AND
+        DT_VENCIMENTO < SYSDATE
+        AND
+        DT_PAGAMENTO IS NULL
+        GROUP BY ID_CLIENTE;
+      IF CONTA_PARC > 0
+      THEN
+        RAISE_APPLICATION_ERROR (-20101, 'Cliente ainda possui parcelas em atraso');
+      END IF;
+  END IF;
+END;
+
+/* EXEMPLO DE INSERÇÃO
+
+INSERT INTO VAREJO.PARCELA
+ (ID_CLIENTE, ID_CONTRATO, NU_PARCELA, VL_PARCELA, DT_VENCIMENTO) 
+   VALUES
+ (401, 1015, 12,  500.20, TO_DATE('05/04/2016','DD/MM/YYYY'));
+*/

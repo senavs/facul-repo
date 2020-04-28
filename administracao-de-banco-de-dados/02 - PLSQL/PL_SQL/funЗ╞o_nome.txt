@@ -1,0 +1,14 @@
+
+
+create or replace function troca_nome (p_nome in varchar2)
+        return varchar2  is
+  
+  v_nome       varchar2(120);
+  begin
+   if (p_nome is null) 
+     then v_nome := 'Não pode nulo';
+   else
+      v_nome := replace(p_nome ,'Rio','Rio Seco');
+   end if;
+    RETURN (v_nome);
+  end;
