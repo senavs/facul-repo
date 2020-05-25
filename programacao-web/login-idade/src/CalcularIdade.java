@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
 import javax.servlet.ServletException;
@@ -7,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/calcular")
@@ -18,10 +18,18 @@ public class CalcularIdade extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter htmlWriter = response.getWriter();
 		
+		HttpSession session = request.getSession();
+		Boolean logado = (Boolean) session.getAttribute("logado");
+		
+		if (!logado) {
+			request.setAttribute("msg-erro", "Logue para calcular a idade");
+			request.getRequestDispatcher("erro.jsp").forward(request, response);
+		}
+			
 		// getting date
 		String[] dateReceived = request.getParameter("data_nascimento").replace(" ", "/").replace("-", "/").split("/");
+
 
 		try {
 			// validating date
@@ -33,16 +41,22 @@ public class CalcularIdade extends HttpServlet {
 			
 			// getting age
 			int age = Age.calculate(today, birth);
-			htmlWriter.println("Data de hoje: " + today + "\nData enviada: "+ birth + "\nIdade: " + age);
+			
+			request.setAttribute("today", today);
+			request.setAttribute("birth", birth);
+			request.setAttribute("age", age);
+			request.getRequestDispatcher("resultado.jsp").forward(request, response);
 		} catch (IllegalArgumentException e) {
-			htmlWriter.println("Data enviada não é válida.");
+			request.setAttribute("msg-erro", "Data enviada não é válida.");
+			request.getRequestDispatcher("erro.jsp").forward(request, response);
 		} catch (ArrayIndexOutOfBoundsException e) {
-			htmlWriter.println("Data enviada não está completa. Tente dd/mm/yyyy");
+			request.setAttribute("msg-erro", "Data enviada não está completa. Tente dd/mm/yyyy.");
+			request.getRequestDispatcher("erro.jsp").forward(request, response);
 		} catch (RuntimeException e) {
-			htmlWriter.println("Impossível calcular idade com data de nascimento futura.");
+			request.setAttribute("msg-erro", "Impossível calcular idade com data de nascimento futura.");
+			request.getRequestDispatcher("erro.jsp").forward(request, response);
 		}
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/valida-usuario")
 public class ValidaUsuario extends HttpServlet {
@@ -19,10 +20,15 @@ public class ValidaUsuario extends HttpServlet {
 		String new_usuario = request.getParameter("usuario");
 		String new_senha = request.getParameter("senha");
 		
+		HttpSession session = request.getSession();
+		session.setAttribute("logado", true);
+		
+		
 		if (USUARIO.equals(new_usuario) && SENHA.equals(new_senha)) {
-			response.sendRedirect("calcular-idade.html");
+			response.sendRedirect("calcular-idade.jsp");
 		} else {
-			response.sendRedirect("login-error.html");
+			request.setAttribute("msg-erro", "Usuário ou Senha incorretos");
+			request.getRequestDispatcher("erro.jsp").forward(request, response);
 		}
 		
 	}
