@@ -1,0 +1,27 @@
+11RORONDONIA                  
+12ACACRE                      
+13AMAMAZONAS                  
+14RRRORAIMA                   
+15PAPARA                      
+16APAMAPA                     
+17TOTOCANTINS                 
+21MAMARANHAO                  
+22PIPIAUI                     
+23CECEARA                     
+24RNRIO GRANDE DO NORTE       
+25PBPARAIBA                   
+26PEPERNAMBUCO                
+27ALALAGOAS                   
+28SESERGIPE                   
+29BABAHIA                     
+31MGMINAS GERAIS              
+32ESESPIRITO SANTO            
+33RJRIO DE JANEIRO            
+35SPSAO PAULO                 
+41PRPARANA                    
+42SCSANTA CATARINA            
+43RSRIO GRANDE DO SUL         
+50MSMATO GROSSO DO SUL        
+51MTMATO GROSSO               
+52GOGOIAS                     
+53DFDISTRITO FEDERAL          

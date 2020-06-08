@@ -1,0 +1,5 @@
+insert into REGIAO_IBGE values (1,'Norte');                                                                                                                                                                                                                  
+insert into REGIAO_IBGE values (2,'Nordeste') ;                                                                                                                                                                                                              
+insert into REGIAO_IBGE values (3,'Sudeste')  ;                                                                                                                                                                                                              
+insert into REGIAO_IBGE values (4,'Sul') ;                                                                                                                                                                                                                   
+insert into REGIAO_IBGE values (5,'Centro-Oeste') ;     
