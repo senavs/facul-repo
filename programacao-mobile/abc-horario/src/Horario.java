@@ -1,46 +1,62 @@
 public class Horario {
-	private static final int TOTAL_SEGUNDOS_EM_UM_DIA = 86400;
-	private static final int TOTAL_SEGUNDOS_EM_UMA_HORA = 3600;
-
 	private int totalSegundos = 0;
-	private int carry = 0;
-	
+	private int diasCarregados = 0;
+
 	public Horario() {
-		this.totalSegundos = 0 % TOTAL_SEGUNDOS_EM_UM_DIA;
-		this.carry = Math.floorDiv(0, TOTAL_SEGUNDOS_EM_UM_DIA);
+		this.setTotalSegundos(0);
 	}
 
-	public Horario(int sec) {
-		this.totalSegundos = sec % TOTAL_SEGUNDOS_EM_UM_DIA;
-		this.carry = Math.floorDiv(sec, TOTAL_SEGUNDOS_EM_UM_DIA);
+	public Horario(int segundos) {
+		this.setTotalSegundos(segundos);
 	}
 
 	public int getTotalSegundos() {
 		return this.totalSegundos;
 	}
 
-	public int getCary() {
-		return this.carry;
+	private void setTotalSegundos(int segundos) {
+		this.totalSegundos = segundos % 86400;
+		this.diasCarregados = Math.floorDiv(segundos, 86400);
 	}
-	
-	public int segundo() {
+
+	public int getDiasCarregados() {
+		return this.diasCarregados;
+	}
+
+	public int getSegundos() {
 		return this.getTotalSegundos() % 60;
 	}
-	
-	public int minuto() {
+
+	public int getMinutos() {
 		return Math.floorDiv(this.getTotalSegundos(), 60) % 60;
 	}
+
+	public int getHoras() {
+		return Math.floorDiv(this.getTotalSegundos(), 3600);
+	}
+
+	public void increamentaSegundos(int segundos) {
+		this.setTotalSegundos(segundos);
+	}
+
+	public void increamentaMinutos(int minutos) {
+		this.setTotalSegundos(minutos * 60);
+	}
 	
-	public int hora() {
-		return Math.floorDiv(this.getTotalSegundos(), TOTAL_SEGUNDOS_EM_UMA_HORA);
+	public void increamentaHoras(int horas) {
+		this.setTotalSegundos(horas * 3600);
+	}
+	
+	public boolean isUltimoSegundo() {
+		return this.getTotalSegundos() == 86399;
 	}
 	
 	public String format(String spec) {
-		spec = spec.replace("%H", Integer.toString(this.hora()));
-		spec = spec.replace("%M", Integer.toString(this.minuto()));
-		spec = spec.replace("%S", Integer.toString(this.segundo()));
+		spec = spec.replace("%H", Integer.toString(this.getHoras()));
+		spec = spec.replace("%M", Integer.toString(this.getMinutos()));
+		spec = spec.replace("%S", Integer.toString(this.getSegundos()));
 		spec = spec.replace("%s", Integer.toString(this.getTotalSegundos()));
-		spec = spec.replace("%c", Integer.toString(this.getCary()));
+		spec = spec.replace("%c", Integer.toString(this.getDiasCarregados()));
 		spec = spec.replace("%%", "%%");
 		return spec;
 	}
@@ -54,11 +70,10 @@ public class Horario {
 	}
 	
 	public String toString() {
-		return this.format("Horario(hora=%H, minuto=%M, segundo=%S, totalSegundos=%s, cary=%c)");
+		return this.format("Horario(hora=%H, minuto=%M, segundo=%S, totalSegundos=%s, diasCarregados=%c)");
 	}
 	
 	public String toString(String spec) {
 		return this.format(spec);
 	}
-
 }
