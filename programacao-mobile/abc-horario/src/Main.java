@@ -12,5 +12,9 @@ public class Main {
 		System.out.println(h4);
 		
 		System.out.println(h2.format("%H:%M:%S"));
+		
+		HorarioSerialize.toFile("./horario.bin", h2);
+		Horario h5 = HorarioSerialize.fromFile("./horario.bin");
+		System.out.println(h5.format("%H:%M:%S"));
 	}
 }

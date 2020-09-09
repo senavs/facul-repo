@@ -1,4 +1,8 @@
-public class Horario {
+import java.io.Serializable;
+
+public class Horario implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private int totalSegundos = 0;
 	private int diasCarregados = 0;
 
