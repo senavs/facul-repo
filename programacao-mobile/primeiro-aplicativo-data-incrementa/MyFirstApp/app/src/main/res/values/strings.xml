@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My First App</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="edit_date">Enter a date</string>
+    <string name="button_inc_day">+ day</string>
+    <string name="button_inc_month">+ month</string>
+    <string name="button_inc_year">+ year</string>
+</resources>
